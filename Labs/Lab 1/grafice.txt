@@ -1,0 +1,37 @@
+function Grafice
+close all
+x = 0:0.01:3;
+
+f = x .^4 ./ 10;
+g = x .* sin(x);
+h = cos(x);
+
+figure(1)
+plot(x,f, 'Color', 'r', 'LineWidth', 3 , 'LineStyle', ':')
+
+figure(2)
+hold on
+plot(x,f,'b')
+plot(x,g,'k')
+
+title('Grafice')
+xlabel('x')
+ylabel('y')
+
+figure(3)
+hold on
+plot(x,f,'b')
+plot(x,g,'r')
+plot(x,h,'k')
+legend('f','g','h')
+
+figure(4)
+hold on
+subplot(1,3,1)
+plot(x,f)
+subplot(1,3,2)
+plot(x,g)
+subplot(1,3,3)
+plot(x,h)
+end
+

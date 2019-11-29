@@ -1,0 +1,8 @@
+function [v] = Binomial(n,p)
+v = zeros(1,n+1)
+for k = 0:n
+    v(k+1) = nchoosek(n,k) * p^k * (1-p)^(n-k);
+end
+figure(1)
+hold on
+plot(0:n,v,'b*')

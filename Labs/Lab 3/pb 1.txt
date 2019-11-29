@@ -1,0 +1,24 @@
+clear all
+clc
+close all
+N=10000;
+x = rand(1,N);
+
+figure(1)
+hold on
+hist(x,20)
+title('RAND')
+
+a=0;
+b = 2;
+y = a + (b-a)*x;
+figure(2)
+hold on
+hist(y,20)
+title(['RAND[',num2str(a),',',num2str(b),']'])
+
+z=randn(1,N);
+figure(3)
+hold on
+hist(z,20)
+title('RANDN')

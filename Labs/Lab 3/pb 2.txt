@@ -1,0 +1,56 @@
+clear all
+clc
+p = 0.35;
+N = 10000;
+X = zeros(1,N);
+%%% a)
+for i = 1: N
+    x(i) = (rand<p);
+end
+frber1 = sum(x);
+frber0 = N - frber1;
+fprintf('Bernoulli \n')
+[frber1/N,frber0/N];
+
+%%% b)
+
+n = 3;
+x = zeros(1,N);
+for i=1:N
+    u=rand(1,n);
+x(i) = sum(u<p);
+end
+FrcrelBin=Frcrel(x);
+
+z=pdf('bino',0:n,n,p);
+fprintf('Binomial\n')
+[FrcrelBin; z]
+
+
+%%% c)
+help 
+X=zeros(1,N);
+for i=1,N
+    X(i) = 0;
+    while rand >= p
+        X(i) = X(i) +1;
+    end
+end
+FrcrelGeo = Frcrel(X)
+[unique(X)',FrcrelGeo']
+
+w = pdf('geo',unique(X),p);
+fprintf('Geometric\n')
+[unique(X)',FrcrelGeo',w']
+
+
+
+-------- functie ---------
+function[vectfr] = Frcrel(X)
+ux = unique(X);
+lx = length(ux);
+fr = zeros(1,lx);
+for j=1:lx
+    fr(j) = sum(X==ux(j));
+end
+vectfr = fr/length(X);

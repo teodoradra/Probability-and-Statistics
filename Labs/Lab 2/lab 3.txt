@@ -1,0 +1,15 @@
+close all;
+% lab 3 ex 2 - NORMAL
+n = 500;
+p = 0.65;
+k = 0:n;
+y = pdf('bino', k,n,p);
+figure(1)
+hold on
+bar(k,y,'b')
+
+medie = n*p;
+sigma = sqrt((n*p)*(1-p));
+x = medie-3*sigma:0.05:medie+3*sigma;
+z = pdf('Normal',x,medie, sigma);
+plot(x,z,'Color','r','LineWidth',2)
